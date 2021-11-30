@@ -1,49 +1,55 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerMovement : MonoBehaviour
 {
 
-    [SerializeField] private Rigidbody _rb;
-    [SerializeField] private float _speed = 5;
-    [SerializeField] private float _turnSpeed = 360;
-    private Vector3 _input;
+    private InputHandler _input;
+
+    [SerializeField]
+
+    private float moveSpeed = 0;
+
+    [SerializeField]
+
+    private Camera PlayerCamera;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        _input = GetComponent<InputHandler>();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        GetInput();
-        Direction();
+        var targetVector = new Vector3(_input.InputVector.x, 0, _input.InputVector.y);
 
+
+        MovetowardsTarget(targetVector);
+
+        RotateTowardMouseVector();
     }
 
-    void FixedUpdate()
+    private void RotateTowardMouseVector()
     {
-        Move();
-        
-    }
+        Ray ray = PlayerCamera.ScreenPointToRay(_input.MousePosition);
 
-    void GetInput()
-    {
-        _input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-    
-    }
-
-    void Direction()
-    {
-        if (_input != Vector3.zero)
+        if(Physics.Raycast(ray, out RaycastHit hitInfo, maxDistance: 300f))
         {
-
-            var relative = (transform.position + _input) - transform.position;
-            var rotation = Quaternion.LookRotation(relative, Vector3.up);
-
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, _turnSpeed * Time.deltaTime);
+            var target = hitInfo.point;
+            target.y = transform.position.y;
+            transform.LookAt(target);
         }
     }
 
-    void Move()
+    private void MovetowardsTarget(Vector3 targetVector)
     {
-        _rb.MovePosition(transform.position + (transform.forward * _input.magnitude) * _speed * Time.deltaTime);
+        var speed = moveSpeed * Time.deltaTime;
+        targetVector = Quaternion.Euler(0, PlayerCamera.gameObject.transform.eulerAngles.y, 0) * targetVector;
+        var targetPosition = transform.position + targetVector * speed;
+        transform.position = targetPosition;
     }
 }
