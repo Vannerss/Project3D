@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FieldofView : MonoBehaviour
 {
-
+    public float MaskCutawaydistance = 0.1f;
     public float viewradius;
     public float viewangle;
     public LayerMask objectstoview;
@@ -112,7 +112,7 @@ public class FieldofView : MonoBehaviour
         {
             if (i < vertexcount - 2)
             {
-                vertices[i + 1] = transform.InverseTransformPoint( viewpoints[i]);
+                vertices[i + 1] = transform.InverseTransformPoint( viewpoints[i]) + Vector3.forward * MaskCutawaydistance;
                 triangles[i * 3] = 0;
                 triangles[i * 3 + 1] = i + 1;
                 triangles[i * 3 + 2] = i + 2;
