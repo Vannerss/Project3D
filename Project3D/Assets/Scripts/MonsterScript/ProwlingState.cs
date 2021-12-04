@@ -9,25 +9,43 @@ public class ProwlingState : MonoBehaviour
 
     private NavMeshAgent enemyObject;
 
+    int previousWalkPoint;
     int randWalkPoint;
 
     float waitTimer;
+    float currCountdownValue;
 
-    bool walkpointSelected = true;
+    bool walkpointSelected = false;
+    bool startWalkPointSelected = false;
+    bool timerWalkPointStoped = false;
 
+    //randWalkPoint = Random.Range(0, walkPoints.Length);
+
+    private void WalkPointSelector()
+    {
+        while (walkpointSelected == false)
+        {
+            randWalkPoint = Random.Range(0, walkPoints.Length);
+            if (previousWalkPoint != randWalkPoint)
+            {
+             
+                walkpointSelected = true;
+            }
+            previousWalkPoint = randWalkPoint;
+        }
+
+        enemyObject.destination = walkPoints[randWalkPoint].position;
+    }
 
     private void Awake()
     {
         enemyObject = GetComponent<NavMeshAgent>();
-        randWalkPoint = Random.Range(0, walkPoints.Length);
+        WalkPointSelector();
     }
 
     private void Update()
     {
-        if (walkpointSelected == true)
-        {
-            enemyObject.destination = walkPoints[randWalkPoint].position;
-        }
+        //enemyObject.destination = walkPoints[randWalkPoint].position;
     }
 
     private void OnTriggerEnter(Collider areaCollisioned)
@@ -35,23 +53,28 @@ public class ProwlingState : MonoBehaviour
 
         if (areaCollisioned.gameObject.tag == "Walk Point")
         {
-            //StartCoroutine((IEnumerator)WalkPointWaitTimer(waitTimer));
-            randWalkPoint = Random.Range(0, walkPoints.Length);
+            StartCoroutine((IEnumerator)StartCountdown(3));
         }
     }
 
-    /*
-    public IEnumerable WalkPointWaitTimer(float waitTimer = 10)
+    public IEnumerator StartCountdown(float countdownValue)
     {
-            yield return new WaitForSeconds(1.0f);
+        currCountdownValue = countdownValue;
+        if (timerWalkPointStoped == false)
+        {
+            timerWalkPointStoped = true;
+            while (currCountdownValue > 0)
+            {
+                Debug.Log("Countdown: " + currCountdownValue);
+                yield return new WaitForSeconds(1.0f);
+                currCountdownValue--;
+            }
+            if (currCountdownValue <= 0)
+            {
+                timerWalkPointStoped = false;
+                walkpointSelected = false;
+                WalkPointSelector();
+            }
+        }
     }
-
-     * currCountdownValue = countdownValue;
-     while (currCountdownValue > 0)
-     {
-         Debug.Log("Countdown: " + currCountdownValue);
-         yield return new WaitForSeconds(1.0f);
-         currCountdownValue--;
-     }
-    */
 }
