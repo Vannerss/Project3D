@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class ProwlingState : MonoBehaviour
+public class ProwlingState : State 
 {
     [SerializeField] private Transform[] walkPoints;
 
@@ -11,6 +11,7 @@ public class ProwlingState : MonoBehaviour
 
     int previousWalkPoint;
     int randWalkPoint;
+    public int range = 5;
 
     float waitTimer;
     float currCountdownValue;
@@ -19,7 +20,16 @@ public class ProwlingState : MonoBehaviour
     bool startWalkPointSelected = false;
     bool timerWalkPointStoped = false;
 
-    //randWalkPoint = Random.Range(0, walkPoints.Length);
+    public override State RunCurrentState()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    /*private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, range);
+    }*/
 
     private void WalkPointSelector()
     {
@@ -41,11 +51,6 @@ public class ProwlingState : MonoBehaviour
     {
         enemyObject = GetComponent<NavMeshAgent>();
         WalkPointSelector();
-    }
-
-    private void Update()
-    {
-        //enemyObject.destination = walkPoints[randWalkPoint].position;
     }
 
     private void OnTriggerEnter(Collider areaCollisioned)

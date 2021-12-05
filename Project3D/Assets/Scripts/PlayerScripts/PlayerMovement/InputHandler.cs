@@ -5,6 +5,8 @@ using UnityEngine;
 public class InputHandler : MonoBehaviour
 {
 
+    public int range = 0;
+
     public Vector2 InputVector { get; private set;}
 
     public Vector3 MousePosition { get; private set; }
@@ -19,5 +21,11 @@ public class InputHandler : MonoBehaviour
 
         MousePosition = Input.mousePosition;
         
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, range);
     }
 }

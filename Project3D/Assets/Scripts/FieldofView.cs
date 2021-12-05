@@ -38,13 +38,10 @@ public class FieldofView : MonoBehaviour
             if (isflashlightoff == false)
             {
                 isflashlightoff = true;
-                
-                
             }
             else
             {
-                isflashlightoff = false;
-                
+                isflashlightoff = false; 
             }
         }
 
@@ -56,6 +53,7 @@ public class FieldofView : MonoBehaviour
     {
         DrawFieldofView();
     }   
+
     public void FindVisible()
     {
         visibletargets.Clear();
@@ -224,21 +222,13 @@ public class FieldofView : MonoBehaviour
 
     public void TurnoffFlashlight()
     {
-        
-        
             viewradius = 0;
-            viewangle = 0;
-        
-        
+            viewangle = 0;         
     }
     public void TurnonFlashlight()
     {
-
-
         viewradius = 37;
         viewangle = 70;
-
-
     }
 
 
