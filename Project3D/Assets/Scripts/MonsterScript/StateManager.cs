@@ -5,7 +5,7 @@ using UnityEngine;
 public class StateManager : MonoBehaviour
 {
 
-    State currentState;
+    public State currentState;
 
     // Update is called once per frame
     void Update()
@@ -25,6 +25,6 @@ public class StateManager : MonoBehaviour
 
     private void SwitchToTheNextState(State nextState)
     {
-
+        currentState = nextState;
     }
 }

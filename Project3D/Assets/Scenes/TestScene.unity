@@ -862,7 +862,7 @@ GameObject:
   - component: {fileID: 1246275857}
   - component: {fileID: 1246275853}
   m_Layer: 0
-  m_Name: Mosnter
+  m_Name: Monster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -892,10 +892,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1246275851}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1398c2a0e68d27d4ea52b8b1c698d674, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e8dc9fb0a9dcf94598c8b8714096362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 10
+  walkPoints:
+  - {fileID: 608852536}
+  - {fileID: 709010706}
+  - {fileID: 1579452980}
+  - {fileID: 1816619522}
+  range: 5
 --- !u!65 &1246275854
 BoxCollider:
   m_ObjectHideFlags: 0

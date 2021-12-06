@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class ProwlingState : State 
+public class MonsterBehavoir : MonoBehaviour
 {
+
     [SerializeField] private Transform[] walkPoints;
 
     private NavMeshAgent enemyObject;
     private GameObject player;
 
-    public ChaseState chaseState;
+    string currentState;
+    string prowlingState = "prowlingState";
+    string chaseState = "chaseState";
+    string searchState = "searchState";
+
     public int range = 5;
 
     int previousWalkPoint;
@@ -23,56 +28,58 @@ public class ProwlingState : State
     bool timerWalkPointStoped = false;
     bool playerInAreaDetected = false;
 
-    public override State RunCurrentState()
+    //Behavoir Controller 
+    private void Awake()
     {
-        if (playerInAreaDetected == true)
+        enemyObject = GetComponent<NavMeshAgent>();
+        InvokeRepeating("UpdateTarget", 0f, 1f);
+        BehaviorController(prowlingState);
+    }
+
+    private void BehaviorController(string State)
+    {
+        switch (State)
         {
-            return chaseState;
-        }
-        else
-        {
-            return this;
+            case "prowlingState":
+                //Debug.Log(prowlingState);
+                WalkPointSelector();
+                break;
+            case "chaseState":
+                break;
+            case "searchState":
+                break;
+            default:
+                Debug.Log("Fuck oof");
+                break;
+
         }
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, range);
-    }
-
+    // Prowling Behaviour 
     private void UpdateTarget()
     {
-        Debug.Log("StateMachine works");
         player = GameObject.FindGameObjectWithTag("Player");
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
         if (player.tag == "Player" && distanceToPlayer <= range)
         {
-            playerInAreaDetected = true;
+            Debug.Log("Target in range");
         }
     }
 
     private void WalkPointSelector()
     {
-        Debug.Log("ProwlingState");
         while (walkpointSelected == false)
         {
             randWalkPoint = Random.Range(0, walkPoints.Length);
             if (previousWalkPoint != randWalkPoint)
             {
-             
+
                 walkpointSelected = true;
             }
             previousWalkPoint = randWalkPoint;
         }
 
         enemyObject.destination = walkPoints[randWalkPoint].position;
-    }
-
-    private void Awake()
-    {
-        enemyObject = GetComponent<NavMeshAgent>();
-        WalkPointSelector();
     }
 
     private void OnTriggerEnter(Collider areaCollisioned)
@@ -104,4 +111,16 @@ public class ProwlingState : State
             }
         }
     }
+
+    private void MoveToPlayer()
+    {
+        enemyObject.destination = player.transform.position;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, range);
+    }
 }
+

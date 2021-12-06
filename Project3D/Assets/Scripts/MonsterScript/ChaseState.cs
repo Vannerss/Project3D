@@ -9,8 +9,23 @@ public class ChaseState : State
     private NavMeshAgent enemyObject;
     private GameObject player;
 
-    private int speed = 2;
+    public ProwlingState prowlingState;
+
     public int range = 5;
+
+    bool playerOutOfArea = false;
+
+    public override State RunCurrentState()
+    {
+        if (playerOutOfArea == true)
+        {
+            return prowlingState;
+        }
+        else
+        {
+            return this;
+        }
+    }
 
     private void OnDrawGizmosSelected()
     {
@@ -34,19 +49,13 @@ public class ChaseState : State
         }
         else
         {
-            Debug.Log("Enemy out of range");
+            playerOutOfArea = true;
         }
     }
 
     private void MoveToPlayer()
     {
-        //enemyObject.transform.position = Vector3.MoveTowards(enemyObject.transform.position, player.transform.position, 1); 
         enemyObject.destination = player.transform.position;
-    }
-
-    public override State RunCurrentState()
-    {
-        throw new System.NotImplementedException();
     }
 
 }
