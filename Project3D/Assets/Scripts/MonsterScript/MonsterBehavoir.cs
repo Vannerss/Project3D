@@ -17,9 +17,10 @@ public class MonsterBehavoir : MonoBehaviour
     string chaseState = "chaseState";
     string searchState = "searchState";
 
-    public int searchRange = 10;
-    public int normalRange = 5;
-    public int range = 5;
+    public int WaitTime = 0;
+    public float DetectionRange = 5;
+    public int WalkingSpeed = 0;
+    public int ChasingSpeed = 2;
 
     int previousWalkPoint;
     int randWalkPoint;
@@ -45,19 +46,17 @@ public class MonsterBehavoir : MonoBehaviour
         switch (currentState)
         {
             case "prowlingState":
-                range = normalRange;
-                enemyObject.speed = 5;
+                enemyObject.speed = WalkingSpeed;
                 WalkPointSelector();
                 previousState = prowlingState;
                 break;
             case "chaseState":
-                enemyObject.speed = 7;
+                enemyObject.speed = ChasingSpeed;
                 MoveToPlayer();
                 previousState = chaseState;
                 break;
             case "searchState":
-                range = searchRange;
-                enemyObject.speed = 5;
+                enemyObject.speed = WalkingSpeed;
                 PlayerLastPoint();
                 break;
 
@@ -68,19 +67,19 @@ public class MonsterBehavoir : MonoBehaviour
     private void TargetUpdate()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-        if (distanceToPlayer <= range && previousState == prowlingState)
+        if (distanceToPlayer <= DetectionRange && previousState == prowlingState)
         {
             currentState = chaseState;
         }
-        else if (distanceToPlayer >= range && previousState == searchState)
+        else if (distanceToPlayer >= DetectionRange && previousState == searchState)
         {
             currentState = prowlingState;
         }
-        else if (distanceToPlayer >= range && previousState == chaseState)
+        else if (distanceToPlayer >= DetectionRange && previousState == chaseState)
         {
             currentState = searchState;
         }
-        else if (distanceToPlayer <= range && previousState == searchState)
+        else if (distanceToPlayer <= DetectionRange && previousState == searchState)
         {
             currentState = chaseState;
         }
@@ -107,7 +106,7 @@ public class MonsterBehavoir : MonoBehaviour
 
         if (areaCollisioned.gameObject.tag == "Walk Point")
         {
-            StartCoroutine((IEnumerator)StartCountdown(3));
+            StartCoroutine((IEnumerator)StartCountdown(WaitTime));
         }
     }
 
@@ -180,11 +179,24 @@ public class MonsterBehavoir : MonoBehaviour
         enemyObject.destination = player.transform.position;
     }
 
+    public void ReduceDetectionRange(bool flashlightoff)
+    {
+        if (flashlightoff)
+        {
+            DetectionRange = DetectionRange / 2;
+        }
+        else if (flashlightoff)
+        {
+            DetectionRange = DetectionRange * 2;
+        }
+
+    }
+
     // Gizmo Maker
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, range);
+        Gizmos.DrawWireSphere(transform.position, DetectionRange);
     }
 }
 

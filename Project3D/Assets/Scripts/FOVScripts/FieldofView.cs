@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FieldofView : MonoBehaviour
 {
+    private MonsterBehavoir monsterBehavoir;
+
     public float MaskCutawaydistance = 0.1f;
     public float viewradius;
     public float viewangle;
@@ -22,6 +24,7 @@ public class FieldofView : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        monsterBehavoir = GetComponent<MonsterBehavoir>();
         viewmesh = new Mesh();
         viewmesh.name = "View Mesh";
         viewmeshfilter.mesh = viewmesh;
@@ -38,10 +41,12 @@ public class FieldofView : MonoBehaviour
             if (isflashlightoff == false)
             {
                 isflashlightoff = true;
+                monsterBehavoir.ReduceDetectionRange(isflashlightoff);
             }
             else
             {
-                isflashlightoff = false; 
+                isflashlightoff = false;
+                monsterBehavoir.ReduceDetectionRange(isflashlightoff);
             }
         }
 

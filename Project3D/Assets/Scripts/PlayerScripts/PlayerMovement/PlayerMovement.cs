@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
         var targetVector = new Vector3(_input.InputVector.x, 0, _input.InputVector.y);
 
         MovetowardsTarget(targetVector);
+        AreaDetector();
         RotateTowardMouseVector();
     }
 
