@@ -5,12 +5,14 @@ using System;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    private PlayerStats _playerStats;
     private InputHandler _input;
+    private Transform _enemyTransform;
 
     [SerializeField]
 
     private float moveSpeed = 0;
+    public float detectionArea = 0;
 
     [SerializeField]
 
@@ -20,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         _input = GetComponent<InputHandler>();
+        _playerStats = GetComponent<PlayerStats>();
+        InvokeRepeating("AreaDetector", 0f, 1.0f);
     }
 
     // Update is called once per frame
@@ -27,9 +31,7 @@ public class PlayerMovement : MonoBehaviour
     {
         var targetVector = new Vector3(_input.InputVector.x, 0, _input.InputVector.y);
 
-
         MovetowardsTarget(targetVector);
-
         RotateTowardMouseVector();
     }
 
@@ -52,4 +54,27 @@ public class PlayerMovement : MonoBehaviour
         var targetPosition = transform.position + targetVector * speed;
         transform.position = targetPosition;
     }
+
+    private void AreaDetector()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        float shortestDistance = Mathf.Infinity;
+        GameObject nearestEnemy = null;
+
+        foreach (GameObject enemy in enemies)
+        {
+            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+            if (distanceToEnemy < shortestDistance)
+            {
+                shortestDistance = distanceToEnemy;
+                nearestEnemy = enemy;
+            }
+            if (nearestEnemy != null && shortestDistance <= detectionArea)
+            {
+                _playerStats.SetHealth(-1);
+            }
+        }
+    }
+
+
 }
