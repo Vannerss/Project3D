@@ -21290,11 +21290,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8141577936404811832, guid: 38c5a9ba7c8099d49bc9d0e9ff926efd, type: 3}
       propertyPath: ChasingSpeed
-      value: 15
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8141577936404811832, guid: 38c5a9ba7c8099d49bc9d0e9ff926efd, type: 3}
       propertyPath: WalkingSpeed
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8141577936404811832, guid: 38c5a9ba7c8099d49bc9d0e9ff926efd, type: 3}
       propertyPath: walkPoints.Array.data[0]
