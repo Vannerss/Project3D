@@ -21289,6 +21289,14 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 8141577936404811832, guid: 38c5a9ba7c8099d49bc9d0e9ff926efd, type: 3}
+      propertyPath: ChasingSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8141577936404811832, guid: 38c5a9ba7c8099d49bc9d0e9ff926efd, type: 3}
+      propertyPath: WalkingSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8141577936404811832, guid: 38c5a9ba7c8099d49bc9d0e9ff926efd, type: 3}
       propertyPath: walkPoints.Array.data[0]
       value: 
       objectReference: {fileID: 463881990}
@@ -34167,6 +34175,14 @@ PrefabInstance:
     - target: {fileID: 8141577935878016486, guid: 38c5a9ba7c8099d49bc9d0e9ff926efd, type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8141577936404811832, guid: 38c5a9ba7c8099d49bc9d0e9ff926efd, type: 3}
+      propertyPath: ChasingSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8141577936404811832, guid: 38c5a9ba7c8099d49bc9d0e9ff926efd, type: 3}
+      propertyPath: WalkingSpeed
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8141577936404811832, guid: 38c5a9ba7c8099d49bc9d0e9ff926efd, type: 3}
       propertyPath: walkPoints.Array.data[0]
@@ -51803,7 +51819,7 @@ Transform:
   - {fileID: 955619676}
   - {fileID: 97052417}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1715801115
 GameObject:
@@ -63023,6 +63039,14 @@ PrefabInstance:
     - target: {fileID: 8141577935878016486, guid: 38c5a9ba7c8099d49bc9d0e9ff926efd, type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8141577936404811832, guid: 38c5a9ba7c8099d49bc9d0e9ff926efd, type: 3}
+      propertyPath: ChasingSpeed
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8141577936404811832, guid: 38c5a9ba7c8099d49bc9d0e9ff926efd, type: 3}
+      propertyPath: WalkingSpeed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8141577936404811832, guid: 38c5a9ba7c8099d49bc9d0e9ff926efd, type: 3}
       propertyPath: walkPoints.Array.data[0]
