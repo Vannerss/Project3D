@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
-
+using UnityEngine.SceneManagement;
 public class PauseManager : MonoBehaviour
 {
 
@@ -13,10 +13,13 @@ public class PauseManager : MonoBehaviour
     public Animator PlayerDeathAnimation;
     public PlayerStats PlayerStatsScript;
     public AudioSource playerdeathsound;
+    public GameObject quitgamebuttonondeath;
+    public GameObject restartgamebuttonondeath;
     // Start is called before the first frame update
     void Start()
     {
-        
+        quitgamebuttonondeath.SetActive(false);
+        restartgamebuttonondeath.SetActive(false);
     }
 
     // Update is called once per frame
@@ -78,7 +81,10 @@ public class PauseManager : MonoBehaviour
     {
         
         PlayerDeathAnimation.SetTrigger("isdead");
+        quitgamebuttonondeath.SetActive(true);
+        restartgamebuttonondeath.SetActive(true);
         StartCoroutine("waitforplayerdeathanimation");
+
 
 
     }
@@ -87,5 +93,9 @@ public class PauseManager : MonoBehaviour
         yield return new WaitForSeconds(5);
         Time.timeScale = 0;
         StopCoroutine("waitforplayerdeathanimation");
+    }
+    public void RestartScene()
+    {
+        Application.LoadLevel(Application.loadedLevel);
     }
 }
