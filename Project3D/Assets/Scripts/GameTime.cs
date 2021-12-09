@@ -8,6 +8,7 @@ using System.IO;
 public class GameTime : MonoBehaviour
 {
     public TextMeshProUGUI gameTimeText;
+    public TextAsset txtfile;
 
     private float startTime;
     private bool gameTime = true;
@@ -42,6 +43,6 @@ public class GameTime : MonoBehaviour
     {
         gameTime = false;
         string gT = "" + gameTimeText.text;
-        File.WriteAllText(Application.dataPath + "/save.txt", gT);
+        File.WriteAllText("Assets/save.txt", gT);
     }
 }
