@@ -15173,6 +15173,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8342462949170844300, guid: 64f7cd6b18384e14f8fc3f9ae9dfa41f, type: 3}
+      propertyPath: moveSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8342462949170844300, guid: 64f7cd6b18384e14f8fc3f9ae9dfa41f, type: 3}
       propertyPath: PlayerCamera
       value: 
       objectReference: {fileID: 705629848}
@@ -64083,7 +64087,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Timer: {fileID: 1833084811}
   playerTransform: {fileID: 374381930}
+  lastDoor: {fileID: 0}
   detectionRange: 1.75
+  pressEInteract: {fileID: 0}
 --- !u!65 &2037166277
 BoxCollider:
   m_ObjectHideFlags: 0
