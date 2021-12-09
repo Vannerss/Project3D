@@ -84,9 +84,6 @@ public class PauseManager : MonoBehaviour
         quitgamebuttonondeath.SetActive(true);
         restartgamebuttonondeath.SetActive(true);
         StartCoroutine("waitforplayerdeathanimation");
-
-
-
     }
     IEnumerator waitforplayerdeathanimation()
     {
@@ -97,5 +94,9 @@ public class PauseManager : MonoBehaviour
     public void RestartScene()
     {
         Application.LoadLevel(Application.loadedLevel);
+    }
+    public void SetFullScreenpls(bool isfullscreen)
+    {
+        Screen.fullScreen = isfullscreen;
     }
 }
