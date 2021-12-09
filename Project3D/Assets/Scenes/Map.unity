@@ -15439,7 +15439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8342462949170844300, guid: 64f7cd6b18384e14f8fc3f9ae9dfa41f, type: 3}
       propertyPath: moveSpeed
-      value: 20
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8342462949170844300, guid: 64f7cd6b18384e14f8fc3f9ae9dfa41f, type: 3}
       propertyPath: PlayerCamera
@@ -21453,6 +21453,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -66.000015
       objectReference: {fileID: 0}
+    - target: {fileID: 5655330872739465236, guid: 37265b1bcdebffb4e9d4b3483592b40e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6e9510369d0aed648ab34a82ba488dd9, type: 2}
     - target: {fileID: 6716337695682661536, guid: 37265b1bcdebffb4e9d4b3483592b40e, type: 3}
       propertyPath: m_Name
       value: Green Door
@@ -22294,6 +22298,10 @@ PrefabInstance:
       propertyPath: walkPoints.Array.data[3]
       value: 
       objectReference: {fileID: 463881987}
+    - target: {fileID: 8141577936404811834, guid: 38c5a9ba7c8099d49bc9d0e9ff926efd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 36a6ca4fa509ac84fb3f08cb92be86f2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38c5a9ba7c8099d49bc9d0e9ff926efd, type: 3}
 --- !u!4 &701643059 stripped
@@ -22668,6 +22676,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -2
       objectReference: {fileID: 0}
+    - target: {fileID: 5655330872739465236, guid: 37265b1bcdebffb4e9d4b3483592b40e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 746bc003a4abebf458eb97c0c68489c7, type: 2}
     - target: {fileID: 6716337695682661536, guid: 37265b1bcdebffb4e9d4b3483592b40e, type: 3}
       propertyPath: m_Name
       value: Red Door
@@ -35712,6 +35724,10 @@ PrefabInstance:
       propertyPath: walkPoints.Array.data[3]
       value: 
       objectReference: {fileID: 97052418}
+    - target: {fileID: 8141577936404811834, guid: 38c5a9ba7c8099d49bc9d0e9ff926efd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 36a6ca4fa509ac84fb3f08cb92be86f2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38c5a9ba7c8099d49bc9d0e9ff926efd, type: 3}
 --- !u!4 &1103348051 stripped
@@ -46045,6 +46061,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 45.99998
       objectReference: {fileID: 0}
+    - target: {fileID: 5655330872739465236, guid: 37265b1bcdebffb4e9d4b3483592b40e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3edca099636ae11469b5f0c00781af42, type: 2}
     - target: {fileID: 6716337695682661536, guid: 37265b1bcdebffb4e9d4b3483592b40e, type: 3}
       propertyPath: m_Name
       value: Blue Door
@@ -66436,6 +66456,10 @@ PrefabInstance:
       propertyPath: walkPoints.Array.data[3]
       value: 
       objectReference: {fileID: 955619677}
+    - target: {fileID: 8141577936404811834, guid: 38c5a9ba7c8099d49bc9d0e9ff926efd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 36a6ca4fa509ac84fb3f08cb92be86f2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38c5a9ba7c8099d49bc9d0e9ff926efd, type: 3}
 --- !u!4 &2072967646 stripped
