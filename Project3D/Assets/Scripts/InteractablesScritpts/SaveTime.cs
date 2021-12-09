@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class SaveTime : MonoBehaviour
 {
     [SerializeField] private Transform playerTransform;
@@ -24,6 +24,7 @@ public class SaveTime : MonoBehaviour
         if (playerNearby == true && Input.GetKeyUp(KeyCode.E))
         {
             gameTime.StopGameTime();
+            SceneManager.LoadScene("WinScene");
         }
     }
 }

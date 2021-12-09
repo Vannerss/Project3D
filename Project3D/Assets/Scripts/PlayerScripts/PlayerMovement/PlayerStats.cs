@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public  class PlayerStats : MonoBehaviour
 {
@@ -16,14 +17,20 @@ public  class PlayerStats : MonoBehaviour
         playerIsDead = false;
     }
 
-    public int SetHealth(int _healthreduced)
+    public void SetHealth(int _healthreduced)
     {
         currentHealth = currentHealth - _healthreduced;
         if (currentHealth <= 0)
         {
-            playerIsDead = true;
+            SceneManager.LoadScene("DieScene");
         }
+    }
 
-        return currentHealth;
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            SetHealth(1);
+        }
     }
 }

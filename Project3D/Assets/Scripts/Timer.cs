@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class Timer : MonoBehaviour
         {
             timeRemaining -= Time.deltaTime;
             timetTxt.text = timeRemaining.ToString();
+        } 
+        else if(timeRemaining <= 0)
+        {
+            SceneManager.LoadScene("DieScene");
         }
     }
 
