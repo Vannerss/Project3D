@@ -7,8 +7,11 @@ public class Button : MonoBehaviour
     [SerializeField] private GameObject Timer;
     [SerializeField] private Transform playerTransform;
     private Timer time;
-    private bool playerNearby;
+    public GameObject lastDoor;
+    private bool playerNearby = false;
     public float detectionRange = 1.75f;
+    public GameObject pressEInteract;
+    private bool wasInteracted = false;
 
     private void Awake()
     {
@@ -17,14 +20,24 @@ public class Button : MonoBehaviour
 
     private void Update()
     {
-        playerNearby = false;
-        if (Vector3.Distance(transform.position, playerTransform.position) <= detectionRange)
+        if (!wasInteracted)
         {
-            playerNearby = true;
-        }
-        if (playerNearby == true && Input.GetKeyUp(KeyCode.E))
-        {
-            time.StartTimer();
+            if (Vector3.Distance(transform.position, playerTransform.position) <= detectionRange)
+            {
+                playerNearby = true;
+                pressEInteract.SetActive(true);
+            }
+            else
+            {
+                playerNearby = false;
+                pressEInteract.SetActive(false);
+            }
+            if (playerNearby == true && Input.GetKeyUp(KeyCode.E))
+            {
+                time.StartTimer();
+                pressEInteract.SetActive(false);
+                lastDoor.SetActive(true);
+            }
         }
     }
 }
