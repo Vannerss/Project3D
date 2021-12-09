@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+
 public class PauseManager : MonoBehaviour
 {
 
@@ -9,6 +10,9 @@ public class PauseManager : MonoBehaviour
     public GameObject SettingsMenuObject;
     public bool ispaused;
     public AudioMixer audioMixer;
+    public Animator PlayerDeathAnimation;
+    public PlayerStats PlayerStatsScript;
+    public AudioSource playerdeathsound;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +38,12 @@ public class PauseManager : MonoBehaviour
                 PauseMenuobject.SetActive(true);
                 Time.timeScale = 0;
             }
+        }
+        if (PlayerStatsScript.playerIsDead == true)
+        {
+            playerdeathsound.Play();
+            OnPlayerDeath();
+            
         }
     }
 
@@ -63,5 +73,19 @@ public class PauseManager : MonoBehaviour
     public void SetFullScreenMode(bool isfullscreen)
     {
         Screen.fullScreen = isfullscreen;
+    }
+    public void OnPlayerDeath()
+    {
+        
+        PlayerDeathAnimation.SetTrigger("isdead");
+        StartCoroutine("waitforplayerdeathanimation");
+
+
+    }
+    IEnumerator waitforplayerdeathanimation()
+    {
+        yield return new WaitForSeconds(5);
+        Time.timeScale = 0;
+        StopCoroutine("waitforplayerdeathanimation");
     }
 }

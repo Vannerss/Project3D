@@ -8,11 +8,12 @@ public  class PlayerStats : MonoBehaviour
     public int PlayerHealth = 5;
     int currentHealth;
 
-    bool playerIsDead = false;
+    public bool playerIsDead = false;
 
     private void Start()
     {
         currentHealth = PlayerHealth;
+        playerIsDead = false;
     }
 
     public int SetHealth(int _healthreduced)
