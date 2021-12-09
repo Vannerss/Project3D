@@ -69686,6 +69686,7 @@ GameObject:
   m_Component:
   - component: {fileID: 200244193916314595}
   - component: {fileID: 4007249854170511984}
+  - component: {fileID: 4007249854170511986}
   m_Layer: 0
   m_Name: Interactable
   m_TagString: Untagged
@@ -69693,6 +69694,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!114 &4007249854170511986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4007249854170511985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed6d320ad7a7c53489bc06e7592deed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 374381930}
+  pressEInteract: {fileID: 0}
+  detectionRange: 1.75
+  gameTime: {fileID: 369214011}
 --- !u!23 &5486315129259323383
 MeshRenderer:
   m_ObjectHideFlags: 0
