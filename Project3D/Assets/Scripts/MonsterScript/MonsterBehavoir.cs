@@ -118,7 +118,6 @@ public class MonsterBehavoir : MonoBehaviour
             timerWalkPointStoped = true;
             while (currCountdownValue > 0)
             {
-                //Debug.Log("Countdown: " + currCountdownValue);
                 yield return new WaitForSeconds(1.0f);
                 currCountdownValue--;
             }
